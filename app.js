@@ -24,6 +24,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//inicio authentication
+app.use(session({
+  secret: '123',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge : 2 * 60 * 1000} // 2 minutos
+  }));
+  
+  // fim
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login, loginRouter')
