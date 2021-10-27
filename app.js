@@ -29,14 +29,15 @@ app.use(session({
   secret: '123',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge : 2 * 60 * 1000} // 2 minutos
+  cookie: { maxAge: 2 * 60 * 1000} // 2 minutos
   }));
   
   // fim
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login, loginRouter')
+app.use('/login', loginRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

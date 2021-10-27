@@ -38,5 +38,16 @@ module.exports = (passport) => {
         passport.use(new LocalStrategy({
             username : 'username',
             password: 'password'
+        }, (username, password, done)=> {
+            try {
+                const user = findUser(username);
+                if(!user) return done(null, false);
+                const isValid = bcrypt.compareSync(password, user.password);
+                if(!isvalid) return done(null, false);
+                return done(null, user);
+            } catch (error) {
+                console.log(error);
+                return done(error, false);
+            }
         }))
     }
