@@ -42,7 +42,7 @@ module.exports = (passport) => {
                 const user = findUser(username);
                 if(!user) return done(null, false);
                 const isValid = bcrypt.compareSync(password, user.password);
-                if(!isvalid) return done(null, false);
+                if(!isValid) return done(null, false);
                 return done(null, user);
             } catch (error) {
                 console.log(error);
