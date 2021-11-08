@@ -46,7 +46,7 @@ app.use(passport.session());
 
 app.use('/users', authenticationMiddleware, usersRouter);
 app.use('/login', loginRouter);
-app.use('/', authenticationMiddleware, indexRouter);
+app.use('/index', authenticationMiddleware, indexRouter);
 
 //Para proteger uma rota, precisa-se criar uma função (com req, res e next). O next é "próximo",
 //ou seja, o usuário segue adiante se estiver autenticado.
