@@ -20,25 +20,24 @@ function findUserById(id){
 }
 
 module.exports = (passport) => {
-
-    passport.serializeUser((user, done)=>{
+    passport.serializeUser((user, done) => {
         done(null, user._id);
     });
 
-    passport.deserializeUser((id,done)=>{
+    passport.deserializeUser((id, done) => {
         try {
             const user = findUserById(id);
             done(null, user);
         } catch (error) {
             console.log(error);
-            return done (error,null);
+            return done (error, null);
         }
         });
 
         passport.use(new LocalStrategy({
             username : 'username',
             password: 'password'
-        }, (username, password, done)=> {
+        }, (username, password, done) => {
             try {
                 const user = findUser(username);
                 if(!user) return done(null, false);
