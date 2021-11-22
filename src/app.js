@@ -17,7 +17,7 @@ function authenticationMiddleware(req, res, next){
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/loginRoutes');
-const logoutRouter = require('routes/logoutRoutes');
+const logoutRouter = require('./routes/logoutRoutes');
 
 const app = express();
 
